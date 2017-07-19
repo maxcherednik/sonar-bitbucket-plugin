@@ -19,7 +19,7 @@ class InputFileCacheSensor(pluginConfig: SonarBBPluginConfig,
   override def analyse(project: Project, context: SensorContext): Unit = {
     logger.debug(LogUtils.f("Going to fetch mappings between Sonar component keys and file paths..."))
     fileSystem.inputFiles(fileSystem.predicates().all()).asScala foreach { inputFile =>
-      val componentKey = context.getResource(inputFile).getEffectiveKey
+      val componentKey = s"${project.key()}:${inputFile.relativePath()}"
       if (logger.isDebugEnabled) {
         logger.debug(LogUtils.f(s"Found mapping $componentKey -> ${inputFile.relativePath()}"))
       }

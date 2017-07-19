@@ -14,8 +14,7 @@ import scala.collection.mutable
 object SonarUtils {
   val LegalBranchNameReplacementChars = """[0-9a-zA-Z:\-_.]*"""
   private val SeverityImagesRootUrl =
-    """https://raw.githubusercontent.com/mibexsoftware/
-      |sonar-bitbucket-plugin/master/src/main/resources/images/severity""".stripMargin.replaceAll("\n", "")
+    """https://raw.githubusercontent.com/mibexsoftware/sonar-bitbucket-plugin/master/src/main/resources/images/severity""".stripMargin.replaceAll("\n", "")
 
   def isSeverityGreaterOrEqual(issue: Issue, referenceSeverity: String): Boolean = {
     val severities = Severity.ALL.asScala
